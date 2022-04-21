@@ -57,7 +57,7 @@ export const AddAutoRole = async (
       { label: "ERROR" }
     );
 
-    ctx.replied ? ctx.deleteReply : null;
+    ctx.replied ? ctx.deleteReply().catch() : null;
     ctx.reply({
       embeds: [
         new RubyEmbed({
@@ -113,7 +113,7 @@ export const RemoveAutoRole = async (
       { label: "ERROR" }
     );
 
-    ctx.replied ? ctx.deleteReply : null;
+    ctx.replied ? ctx.deleteReply().catch() : null;
     ctx.reply({
       embeds: [
         new RubyEmbed({
@@ -139,7 +139,10 @@ export const ListAutoRoles = async (ctx: Extendedinteraction) => {
     ctx.reply({
       embeds: [
         new RubyEmbed({
-          author: { name: `${ctx.guild.name}'s Auto Roles!`, icon_url: ctx.guild.iconURL() },
+          author: {
+            name: `${ctx.guild.name}'s Auto Roles!`,
+            icon_url: ctx.guild.iconURL(),
+          },
           description: `${AutoRoles.roles.map((r) => `<@&${r}>`).join(", ")}`,
         }),
       ],
@@ -150,7 +153,7 @@ export const ListAutoRoles = async (ctx: Extendedinteraction) => {
       { label: "ERROR" }
     );
 
-    ctx.replied ? ctx.deleteReply : null;
+    ctx.replied ? ctx.deleteReply().catch() : null;
     ctx.reply({
       embeds: [
         new RubyEmbed({

@@ -31,7 +31,7 @@ export const Guide = async (
       { label: "ERROR" }
     );
 
-    ctx.replied ? ctx.deleteReply : null;
+    ctx.replied ? ctx.deleteReply().catch() : null;
     ctx.reply({
       embeds: [
         new RubyEmbed({
@@ -127,18 +127,18 @@ export const UpdateChannel = async (
       }
     });
   } catch (err) {
-     Logger.error(
-       `There was an error collecting an heartboard channel | ${ctx.guild.name} (${ctx.guild.id})`,
-       { label: "ERROR" }
-     );
+    Logger.error(
+      `There was an error collecting an heartboard channel | ${ctx.guild.name} (${ctx.guild.id})`,
+      { label: "ERROR" }
+    );
 
-     ctx.replied ? ctx.deleteReply : null;
-     ctx.reply({
-       embeds: [
-         new RubyEmbed({
-           description: `There was an error collecting this channel!`,
-         }),
-       ],
-     });
+    ctx.replied ? ctx.deleteReply().catch() : null;
+    ctx.reply({
+      embeds: [
+        new RubyEmbed({
+          description: `There was an error collecting this channel!`,
+        }),
+      ],
+    });
   }
 };

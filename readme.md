@@ -15,6 +15,7 @@ Ruby is our main bot. She can help you manage aswell as entertain your entire se
 - [-] Economy
 - [-] Custom Commands
 - [-] Auto Mod
+- [-] Moderation
 - [-] Moderator Logs
 - [-] Twitch, Youtube, Twitter Notifications
 - [-] Utils
